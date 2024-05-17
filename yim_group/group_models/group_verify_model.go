@@ -1,6 +1,6 @@
-package models3
+package group_models
 
-import "yim_server/commen/models"
+import "yim_server/common/models"
 
 // GroupVerifyModel 群验证信息表
 type GroupVerifyModel struct {

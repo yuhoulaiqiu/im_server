@@ -1,8 +1,8 @@
-package models3
+package group_models
 
 import (
-	"yim_server/commen/models"
-	"yim_server/commen/models/ctype"
+	"yim_server/common/models"
+	"yim_server/common/models/ctype"
 )
 
 type GroupModel struct {

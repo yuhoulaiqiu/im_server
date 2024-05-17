@@ -1,8 +1,8 @@
-package models2
+package chat_models
 
 import (
-	"yim_server/commen/models"
-	"yim_server/commen/models/ctype"
+	"yim_server/common/models"
+	"yim_server/common/models/ctype"
 )
 
 type ChatModel struct {

@@ -1,6 +1,6 @@
-package models
+package user_models
 
-import "yim_server/commen/models"
+import "yim_server/common/models"
 
 // FriendModel 好友表
 type FriendModel struct {

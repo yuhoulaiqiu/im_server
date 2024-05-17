@@ -1,6 +1,6 @@
-package models
+package user_models
 
-import "yim_server/commen/models"
+import "yim_server/common/models"
 
 // FriendVerifyModel 好友验证表
 type FriendVerifyModel struct {

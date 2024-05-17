@@ -1,8 +1,8 @@
-package models
+package user_models
 
 import (
-	"yim_server/commen/models"
-	"yim_server/commen/models/ctype"
+	"yim_server/common/models"
+	"yim_server/common/models/ctype"
 )
 
 // UserConfModel 用户配置表
@@ -16,7 +16,7 @@ type UserConfModel struct {
 	SecureLink     bool                  `json:"secureLink"`               //安全链接
 	SavePwd        bool                  `json:"savePwd"`                  //保存密码
 	SearchUser     int8                  `json:"searchUser"`               //别人搜索用户的方式，0：不允许，1：允许用户号搜索，2：允许昵称搜索
-	Verify         int8                  `json:"Verify"`                   //添加好友验证方式，0：不允许添加，1：不需要验证，2：需要验证，3：需要回答问题，4：需要正确回答问题
+	Verify         int8                  `json:"verify"`                   //添加好友验证方式，0：不允许添加，1：不需要验证，2：需要验证，3：需要回答问题，4：需要正确回答问题
 	VerifyQuestion *ctype.VerifyQuestion `json:"verifyQuestion"`           //好友验证问题 为3、4时需要
 	IsOnline       bool                  `json:"isOnline"`                 //是否在线
 }
