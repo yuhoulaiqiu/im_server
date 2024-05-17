@@ -4,7 +4,7 @@ package types
 type FriendInfoRequest struct {
 	UserID   uint `header:"User-ID"`
 	Role     int8 `header:"Role"`
-	FriendID uint `form:"friendId"`
+	FriendID uint `json:"friendId"`
 }
 
 type FriendInfoResponse struct {
