@@ -49,7 +49,7 @@ type UserInfoUpdateResponse {}
 type FriendInfoRequest {
 	UserID   uint `header:"User-ID"`
 	Role     int8 `header:"Role"`
-	FriendID uint `json:"friendId"`
+	FriendID uint `form:"friendId"`
 }
 
 type FriendInfoResponse {
@@ -60,6 +60,26 @@ type FriendInfoResponse {
 	Note     string `json:"note"` //备注
 }
 
+type FriendListRequest {
+	Page   int  `form:"page,optional"`
+	Limit  int  `form:"limit,optional"`
+	UserID uint `header:"User-ID"`
+	Role   int8 `header:"Role"`
+}
+
+type FriendListResponse {
+	List  []FriendInfoResponse `json:"list"`
+	Count int                  `json:"count"`
+}
+
+type FriendNoteRequest {
+	Note     string `json:"note"`
+	FriendID uint   `json:"friendId"`
+	UserID   uint   `header:"User-ID"`
+}
+
+type FriendNoteResponse {}
+
 service users {
 	@handler UserInfo
 	get /api/user/user_info (UserInfoRequest) returns (UserInfoResponse)
@@ -69,6 +89,12 @@ service users {
 
 	@handler FriendInfo
 	get /api/user/friend_info (FriendInfoRequest) returns (FriendInfoResponse)
+
+	@handler FriendList
+	get /api/user/friends (FriendListRequest) returns (FriendListResponse)
+
+	@handler FriendNoteUpdate
+	put /api/user/friends/:id (FriendNoteRequest) returns (FriendNoteResponse)
 }
 
 // goctl api go -api user_api.api -dir . --home ../../template

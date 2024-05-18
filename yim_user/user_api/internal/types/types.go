@@ -4,7 +4,7 @@ package types
 type FriendInfoRequest struct {
 	UserID   uint `header:"User-ID"`
 	Role     int8 `header:"Role"`
-	FriendID uint `json:"friendId"`
+	FriendID uint `form:"friendId"`
 }
 
 type FriendInfoResponse struct {
@@ -13,6 +13,27 @@ type FriendInfoResponse struct {
 	Abstract string `json:"abstract"`
 	Avatar   string `json:"avatar"`
 	Note     string `json:"note"` //备注
+}
+
+type FriendListRequest struct {
+	Page   int  `form:"page,optional"`
+	Limit  int  `form:"limit,optional"`
+	UserID uint `header:"User-ID"`
+	Role   int8 `header:"Role"`
+}
+
+type FriendListResponse struct {
+	List  []FriendInfoResponse `json:"list"`
+	Count int                  `json:"count"`
+}
+
+type FriendNoteRequest struct {
+	Note     string `json:"note"`
+	FriendID uint   `json:"friendId"`
+	UserID   uint   `header:"User-ID"`
+}
+
+type FriendNoteResponse struct {
 }
 
 type UserInfoRequest struct {

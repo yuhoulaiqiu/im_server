@@ -29,7 +29,7 @@ func NewAuthenticationLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Au
 
 func (l *AuthenticationLogic) Authentication(req *types.AuthenticationRequest) (resp *types.AuthenticationResponse, err error) {
 	fmt.Println(req.Token, req.ValidPath)
-	if utils.InList(l.svcCtx.Config.WhiteList, req.ValidPath) {
+	if utils.InListByRegex(l.svcCtx.Config.WhiteList, req.ValidPath) {
 		logx.Infof("%s 在白名单中", req.ValidPath)
 		return
 	}
