@@ -80,21 +80,45 @@ type FriendNoteRequest {
 
 type FriendNoteResponse {}
 
+type SearchRequest {
+	Keyword string `form:"keyword"`
+	UserID  uint   `header:"User-ID"`
+	Online  bool   `form:"online,optional"`
+	Page    int    `form:"page,optional"`
+	Limit   int    `form:"limit,optional"`
+}
+
+type ScarchInfo {
+	UserID   uint   `json:"userId"`
+	NickName string `json:"nickName"`
+	Abstract string `json:"abstract"`
+	Avatar   string `json:"avatar"`
+	IsFriend bool   `json:"isFriend"` //是否是好友
+}
+
+type SearchResponse {
+	List  []ScarchInfo `json:"list"`
+	Count int64        `json:"count"`
+}
+
 service users {
-	@handler UserInfo
+	@handler UserInfo //获取用户信息
 	get /api/user/user_info (UserInfoRequest) returns (UserInfoResponse)
 
-	@handler UserInfoUpdate
+	@handler UserInfoUpdate //更新用户信息
 	put /api/user/user_info (UserInfoUpdateRequest) returns (UserInfoUpdateResponse)
 
-	@handler FriendInfo
+	@handler FriendInfo //获取好友信息
 	get /api/user/friend_info (FriendInfoRequest) returns (FriendInfoResponse)
 
-	@handler FriendList
+	@handler FriendList //获取好友列表
 	get /api/user/friends (FriendListRequest) returns (FriendListResponse)
 
-	@handler FriendNoteUpdate
+	@handler FriendNoteUpdate //更新好友备注
 	put /api/user/friends (FriendNoteRequest) returns (FriendNoteResponse)
+
+	@handler Search //搜索用户
+	get /api/user/search (SearchRequest) returns (SearchResponse)
 }
 
 // goctl api go -api user_api.api -dir . --home ../../template

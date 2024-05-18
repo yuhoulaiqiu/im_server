@@ -36,6 +36,27 @@ type FriendNoteRequest struct {
 type FriendNoteResponse struct {
 }
 
+type ScarchInfo struct {
+	UserID   uint   `json:"userId"`
+	NickName string `json:"nickName"`
+	Abstract string `json:"abstract"`
+	Avatar   string `json:"avatar"`
+	IsFriend bool   `json:"isFriend"` //是否是好友
+}
+
+type SearchRequest struct {
+	Keyword string `form:"keyword"`
+	UserID  uint   `header:"User-ID"`
+	Online  bool   `form:"online,optional"`
+	Page    int    `form:"page,optional"`
+	Limit   int    `form:"limit,optional"`
+}
+
+type SearchResponse struct {
+	List  []ScarchInfo `json:"list"`
+	Count int64        `json:"count"`
+}
+
 type UserInfoRequest struct {
 	UserID uint `header:"User-ID"`
 	Role   int8 `header:"Role"`
