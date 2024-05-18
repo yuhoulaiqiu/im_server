@@ -24,7 +24,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPut,
-				Path:    "/api/user/friends/:id",
+				Path:    "/api/user/friends",
 				Handler: FriendNoteUpdateHandler(serverCtx),
 			},
 			{

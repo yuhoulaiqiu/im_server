@@ -94,7 +94,7 @@ service users {
 	get /api/user/friends (FriendListRequest) returns (FriendListResponse)
 
 	@handler FriendNoteUpdate
-	put /api/user/friends/:id (FriendNoteRequest) returns (FriendNoteResponse)
+	put /api/user/friends (FriendNoteRequest) returns (FriendNoteResponse)
 }
 
 // goctl api go -api user_api.api -dir . --home ../../template
